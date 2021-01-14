@@ -1,0 +1,31 @@
+<div class="container">
+    <h2>Add New Task</h2>
+
+    <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <div class="form-group mt-2">
+
+            <input #title="ngModel" ngModel name="title" type="text" [(ngModel)]="task.title" class="form-control m-2" placeholder="Title" required>
+            <span class="text text-danger m-2" *ngIf="title.touched && title.errors?.required" >This Title is Required</span>
+
+            <textarea name="description" type="text" [(ngModel)]="task.description" class="form-control m-2"
+                placeholder="Description"></textarea>
+            <div class="row m-2">
+                <input type="submit" [disabled]="!myform.valid"class="btn btn-primary m-2" value="Save">
+                <a type="button"  (click)="reset(myform)" class="btn btn-info m-2">Rest</a>
+                <a routerLink="" class="btn btn-danger m-2">Close</a>
+            </div>
+        </div>
+    </form>
+
+    <!--
+    <div class="form-group mt-2">
+        <input #myTitle type="text" class="form-control m-2" placeholder="Title">
+        <textarea #myDesc type="text" class="form-control m-2" placeholder="Description"></textarea>
+        <div class="row m-2">
+            <button class="btn btn-primary m-2" (click)="onSubmit(myTitle,myDesc)">Save</button>
+            <a routerLink="" class="btn btn-danger m-2">Close</a>
+        </div>
+    </div>
+-->
+
+</div>
